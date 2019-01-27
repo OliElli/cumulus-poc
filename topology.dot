@@ -1,12 +1,4 @@
 graph vx {
-  graph [fontsize=8 fontname=Verdana compound=true];
-  node [shape=box style=filled]
-
-  { rank=same leaf01 leaf02 }
-  { rank=same spine01 spine02 }
-  { rank=same exit01 exit02 }
-  { rank=max "oob-mgmt-server" "oob-mgmt-switch" }
-
   "leaf01" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.7.2" memory="768" config="./helper_scripts/config_switch.sh" ]
   "leaf02" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.7.2" memory="768" config="./helper_scripts/config_switch.sh" ]
   "spine01" [function="spine" os="CumulusCommunity/cumulus-vx" version="3.7.2" memory="768" config="./helper_scripts/config_switch.sh" ]
