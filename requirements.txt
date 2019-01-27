@@ -1,0 +1,5 @@
+pip>=18
+setuptools
+pydotplus
+jinja2
+ipaddress
