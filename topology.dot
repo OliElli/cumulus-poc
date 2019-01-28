@@ -28,10 +28,10 @@ graph vx {
   "server01":"eth2" -- "leaf02":"swp1" [left_mac="00:03:00:11:11:02"]
   "server02":"eth1" -- "leaf01":"swp2" [left_mac="00:03:00:22:22:01"]
   "server02":"eth2" -- "leaf02":"swp2" [left_mac="00:03:00:22:22:02"]
-  "server03":"eth1" -- "exit01":"swp5" [left_mac="00:03:00:33:33:01"]
-  "server03":"eth2" -- "exit02":"swp5" [left_mac="00:03:00:33:33:02"]
-  "server04":"eth1" -- "exit01":"swp6" [left_mac="00:03:00:44:44:01"]
-  "server04":"eth2" -- "exit02":"swp6" [left_mac="00:03:00:44:44:02"]
+  "server03":"eth1" -- "exit01":"swp11" [left_mac="00:03:00:33:33:01"]
+  "server03":"eth2" -- "exit02":"swp11" [left_mac="00:03:00:33:33:02"]
+  "server04":"eth1" -- "exit01":"swp12" [left_mac="00:03:00:44:44:01"]
+  "server04":"eth2" -- "exit02":"swp12" [left_mac="00:03:00:44:44:02"]
 
   "exit01":"swp56" -- "spine01":"swp30"
   "exit01":"swp55" -- "spine02":"swp30"
@@ -41,8 +41,8 @@ graph vx {
   "internet":"swp1" -- "exit01":"swp1"
   "internet":"swp2" -- "exit02":"swp1"
 
-  "edge01":"eth1" -- "exit01":"swp4"
-  "edge01":"eth2" -- "exit02":"swp4"
+  "edge01":"eth1" -- "exit01":"swp10"
+  "edge01":"eth2" -- "exit02":"swp10"
 
   "f5-1":"swp1" -- "exit01":"swp3"
   "f5-1":"swp2" -- "exit01":"swp4"
@@ -68,5 +68,5 @@ graph vx {
   "edge01":"eth0" -- "oob-mgmt-switch":"swp14" [left_mac="a0:00:00:00:00:51"]
   "internet":"eth0" -- "oob-mgmt-switch":"swp15" [left_mac="a0:00:00:00:00:50"]
   "f5-1":"eth0" -- "oob-mgmt-switch":"swp16" [left_mac="a0:00:00:00:00:71"]
-  "f5-2":"eth0" -- "oob-mgmt-switch":"swp16" [left_mac="a0:00:00:00:00:72"]
+  "f5-2":"eth0" -- "oob-mgmt-switch":"swp17" [left_mac="a0:00:00:00:00:72"]
 }
