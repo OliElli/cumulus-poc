@@ -13,6 +13,8 @@ graph vx {
   "internet" [function="internet" vagrant="swp48" os="CumulusCommunity/cumulus-vx" version="3.7.2" memory="768" config="./helper_scripts/config_internet.sh" ]
   "oob-mgmt-switch" [function="oob-switch" vagrant="eth0" os="CumulusCommunity/cumulus-vx" version="3.7.2" memory="768" config="./helper_scripts/config_oob_switch.sh" ]
   "oob-mgmt-server" [function="oob-server" vagrant="eth0" os="CumulusCommunity/vx_oob_server" version="1.0.4" memory="1024" config="./helper_scripts/config_oob_server.sh" ]
+  "f5-1" [function="exit" os="CumulusCommunity/cumulus-vx" version="3.7.2" memory="768" config="./helper_scripts/config_switch.sh" ]
+  "f5-2" [function="exit" os="CumulusCommunity/cumulus-vx" version="3.7.2" memory="768" config="./helper_scripts/config_switch.sh" ]
 
   "leaf01":"swp56" -- "spine01":"swp1"
   "leaf02":"swp56" -- "spine01":"swp2"
@@ -42,6 +44,16 @@ graph vx {
   "edge01":"eth1" -- "exit01":"swp4"
   "edge01":"eth2" -- "exit02":"swp4"
 
+  "f5-1":"swp1" -- "exit01":"swp3"
+  "f5-1":"swp2" -- "exit01":"swp4"
+  "f5-1":"swp3" -- "exit02":"swp3"
+  "f5-1":"swp4" -- "exit02":"swp4"
+  
+  "f5-2":"swp1" -- "exit01":"swp5"
+  "f5-2":"swp2" -- "exit01":"swp6"
+  "f5-2":"swp3" -- "exit02":"swp5"
+  "f5-2":"swp4" -- "exit02":"swp6"
+
   "oob-mgmt-server":"eth1" -- "oob-mgmt-switch":"swp1" [right_mac="a0:00:00:00:00:61"]
   "server01":"eth0" -- "oob-mgmt-switch":"swp2" [left_mac="a0:00:00:00:00:31"]
   "server02":"eth0" -- "oob-mgmt-switch":"swp3" [left_mac="a0:00:00:00:00:32"]
@@ -55,4 +67,6 @@ graph vx {
   "exit02":"eth0" -- "oob-mgmt-switch":"swp13" [left_mac="a0:00:00:00:00:42"]
   "edge01":"eth0" -- "oob-mgmt-switch":"swp14" [left_mac="a0:00:00:00:00:51"]
   "internet":"eth0" -- "oob-mgmt-switch":"swp15" [left_mac="a0:00:00:00:00:50"]
+  "f5-1":"eth0" -- "oob-mgmt-switch":"swp16" [left_mac="a0:00:00:00:00:71"]
+  "f5-2":"eth0" -- "oob-mgmt-switch":"swp16" [left_mac="a0:00:00:00:00:72"]
 }
