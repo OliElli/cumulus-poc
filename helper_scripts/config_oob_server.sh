@@ -61,9 +61,7 @@ exit02 ansible_host=192.168.0.42 ansible_user=cumulus
 exit01 ansible_host=192.168.0.41 ansible_user=cumulus
 
 [leaf]
-leaf04 ansible_host=192.168.0.14 ansible_user=cumulus
 leaf02 ansible_host=192.168.0.12 ansible_user=cumulus
-leaf03 ansible_host=192.168.0.13 ansible_user=cumulus
 leaf01 ansible_host=192.168.0.11 ansible_user=cumulus
 
 [spine]
@@ -76,6 +74,10 @@ server01 ansible_host=192.168.0.31 ansible_user=cumulus
 server03 ansible_host=192.168.0.33 ansible_user=cumulus
 server02 ansible_host=192.168.0.32 ansible_user=cumulus
 server04 ansible_host=192.168.0.34 ansible_user=cumulus
+
+[f5]
+f5-1 ansible_host=192.168.0.13 ansible_user=cumulus
+f5-2 ansible_host=192.168.0.14 ansible_user=cumulus
 EOT
 
 echo " ### Pushing DHCP File ###"
@@ -157,11 +159,11 @@ group {
 
  host spine01 {hardware ethernet a0:00:00:00:00:21; fixed-address 192.168.0.21; option host-name "spine01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
 
- host leaf04 {hardware ethernet a0:00:00:00:00:14; fixed-address 192.168.0.14; option host-name "leaf04"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+ host f5-2 {hardware ethernet a0:00:00:00:00:14; fixed-address 192.168.0.14; option host-name "f5-2"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
 
  host leaf02 {hardware ethernet a0:00:00:00:00:12; fixed-address 192.168.0.12; option host-name "leaf02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
 
- host leaf03 {hardware ethernet a0:00:00:00:00:13; fixed-address 192.168.0.13; option host-name "leaf03"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+ host f5-1 {hardware ethernet a0:00:00:00:00:13; fixed-address 192.168.0.13; option host-name "f5-1"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
 
  host leaf01 {hardware ethernet a0:00:00:00:00:11; fixed-address 192.168.0.11; option host-name "leaf01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
 
@@ -196,9 +198,9 @@ cat << EOT > /etc/hosts
 192.168.0.41 exit01
 192.168.0.22 spine02
 192.168.0.21 spine01
-192.168.0.14 leaf04
+192.168.0.14 f5-2
 192.168.0.12 leaf02
-192.168.0.13 leaf03
+192.168.0.13 f5-1
 192.168.0.11 leaf01
 192.168.0.51 edge01
 192.168.0.31 server01
