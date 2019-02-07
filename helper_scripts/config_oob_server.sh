@@ -57,23 +57,27 @@ cat << EOT > /etc/ansible/hosts
 oob-mgmt-switch ansible_host=192.168.0.1 ansible_user=cumulus
 
 [exit]
-exit02 ansible_host=192.168.0.42 ansible_user=cumulus
 exit01 ansible_host=192.168.0.41 ansible_user=cumulus
+exit02 ansible_host=192.168.0.42 ansible_user=cumulus
 
 [leaf]
-leaf02 ansible_host=192.168.0.12 ansible_user=cumulus
 leaf01 ansible_host=192.168.0.11 ansible_user=cumulus
+leaf02 ansible_host=192.168.0.12 ansible_user=cumulus
 
 [spine]
-spine02 ansible_host=192.168.0.22 ansible_user=cumulus
 spine01 ansible_host=192.168.0.21 ansible_user=cumulus
+spine02 ansible_host=192.168.0.22 ansible_user=cumulus
 
 [host]
-edge01 ansible_host=192.168.0.51 ansible_user=cumulus
 server01 ansible_host=192.168.0.31 ansible_user=cumulus
-server03 ansible_host=192.168.0.33 ansible_user=cumulus
 server02 ansible_host=192.168.0.32 ansible_user=cumulus
+server03 ansible_host=192.168.0.33 ansible_user=cumulus
 server04 ansible_host=192.168.0.34 ansible_user=cumulus
+edge01 ansible_host=192.168.0.51 ansible_user=cumulus
+storage01 ansible_host=192.168.0.81 ansible_user=cumulus
+storage02 ansible_host=192.168.0.82 ansible_user=cumulus
+storage03 ansible_host=192.168.0.83 ansible_user=cumulus
+storage04 ansible_host=192.168.0.84 ansible_user=cumulus
 
 [f5]
 f5-1 ansible_host=192.168.0.13 ansible_user=cumulus
@@ -149,35 +153,25 @@ group {
   option www-server 192.168.0.254;
   option default-url = "http://192.168.0.254/onie-installer";
 
- host oob-mgmt-switch {hardware ethernet a0:00:00:00:00:61; fixed-address 192.168.0.1; option host-name "oob-mgmt-switch"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-
- host exit02 {hardware ethernet a0:00:00:00:00:42; fixed-address 192.168.0.42; option host-name "exit02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-
- host exit01 {hardware ethernet a0:00:00:00:00:41; fixed-address 192.168.0.41; option host-name "exit01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-
- host spine02 {hardware ethernet a0:00:00:00:00:22; fixed-address 192.168.0.22; option host-name "spine02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-
- host spine01 {hardware ethernet a0:00:00:00:00:21; fixed-address 192.168.0.21; option host-name "spine01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-
- host f5-2 {hardware ethernet a0:00:00:00:00:14; fixed-address 192.168.0.14; option host-name "f5-2"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-
- host leaf02 {hardware ethernet a0:00:00:00:00:12; fixed-address 192.168.0.12; option host-name "leaf02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-
- host f5-1 {hardware ethernet a0:00:00:00:00:13; fixed-address 192.168.0.13; option host-name "f5-1"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-
- host leaf01 {hardware ethernet a0:00:00:00:00:11; fixed-address 192.168.0.11; option host-name "leaf01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-
- host edge01 {hardware ethernet a0:00:00:00:00:51; fixed-address 192.168.0.51; option host-name "edge01"; } 
-
- host server01 {hardware ethernet a0:00:00:00:00:31; fixed-address 192.168.0.31; option host-name "server01"; } 
-
- host server03 {hardware ethernet a0:00:00:00:00:33; fixed-address 192.168.0.33; option host-name "server03"; } 
-
- host server02 {hardware ethernet a0:00:00:00:00:32; fixed-address 192.168.0.32; option host-name "server02"; } 
-
- host server04 {hardware ethernet a0:00:00:00:00:34; fixed-address 192.168.0.34; option host-name "server04"; } 
-
- host internet {hardware ethernet a0:00:00:00:00:50; fixed-address 192.168.0.253; option host-name "internet"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host oob-mgmt-switch {hardware ethernet a0:00:00:00:00:61; fixed-address 192.168.0.1; option host-name "oob-mgmt-switch"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host exit02 {hardware ethernet a0:00:00:00:00:42; fixed-address 192.168.0.42; option host-name "exit02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host exit01 {hardware ethernet a0:00:00:00:00:41; fixed-address 192.168.0.41; option host-name "exit01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host spine02 {hardware ethernet a0:00:00:00:00:22; fixed-address 192.168.0.22; option host-name "spine02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host spine01 {hardware ethernet a0:00:00:00:00:21; fixed-address 192.168.0.21; option host-name "spine01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host f5-2 {hardware ethernet a0:00:00:00:00:14; fixed-address 192.168.0.14; option host-name "f5-2"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host leaf02 {hardware ethernet a0:00:00:00:00:12; fixed-address 192.168.0.12; option host-name "leaf02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host f5-1 {hardware ethernet a0:00:00:00:00:13; fixed-address 192.168.0.13; option host-name "f5-1"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host leaf01 {hardware ethernet a0:00:00:00:00:11; fixed-address 192.168.0.11; option host-name "leaf01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host edge01 {hardware ethernet a0:00:00:00:00:51; fixed-address 192.168.0.51; option host-name "edge01"; } 
+  host server01 {hardware ethernet a0:00:00:00:00:31; fixed-address 192.168.0.31; option host-name "server01"; } 
+  host server03 {hardware ethernet a0:00:00:00:00:33; fixed-address 192.168.0.33; option host-name "server03"; } 
+  host server02 {hardware ethernet a0:00:00:00:00:32; fixed-address 192.168.0.32; option host-name "server02"; } 
+  host server04 {hardware ethernet a0:00:00:00:00:34; fixed-address 192.168.0.34; option host-name "server04"; } 
+  host storage01 {hardware ethernet a0:00:00:00:00:81; fixed-address 192.168.0.81; option host-name "storage01"; } 
+  host storage02 {hardware ethernet a0:00:00:00:00:82; fixed-address 192.168.0.82; option host-name "storage02"; } 
+  host storage03 {hardware ethernet a0:00:00:00:00:83; fixed-address 192.168.0.83; option host-name "storage03"; } 
+  host storage04 {hardware ethernet a0:00:00:00:00:84; fixed-address 192.168.0.84; option host-name "storage04"; } 
+  host internet {hardware ethernet a0:00:00:00:00:50; fixed-address 192.168.0.253; option host-name "internet"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
 
 }#End of static host group
 EOT
@@ -194,19 +188,23 @@ cat << EOT > /etc/hosts
 192.168.0.254 oob-mgmt-server 
 
 192.168.0.1 oob-mgmt-switch
-192.168.0.42 exit02
-192.168.0.41 exit01
-192.168.0.22 spine02
-192.168.0.21 spine01
-192.168.0.14 f5-2
+192.168.0.11 leaf01
 192.168.0.12 leaf02
 192.168.0.13 f5-1
-192.168.0.11 leaf01
-192.168.0.51 edge01
+192.168.0.14 f5-2
+192.168.0.21 spine01
+192.168.0.22 spine02
 192.168.0.31 server01
-192.168.0.33 server03
 192.168.0.32 server02
+192.168.0.33 server03
 192.168.0.34 server04
+192.168.0.41 exit01
+192.168.0.42 exit02
+192.168.0.51 edge01
+192.168.0.81 storage01
+192.168.0.82 storage02
+192.168.0.83 storage03
+192.168.0.84 storage04
 192.168.0.253 internet
 
 # The following lines are desirable for IPv6 capable hosts
