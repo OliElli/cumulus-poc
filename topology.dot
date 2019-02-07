@@ -41,10 +41,10 @@ graph vx {
   "storage01":"eth2" -- "leaf02":"swp3" [left_mac="00:04:00:11:11:02"]
   "storage02":"eth1" -- "leaf01":"swp4" [left_mac="00:04:00:22:22:01"]
   "storage02":"eth2" -- "leaf02":"swp4" [left_mac="00:04:00:22:22:02"]
-  "storage03":"eth1" -- "leaf01":"swp5" [left_mac="00:04:00:11:11:01"]
-  "storage03":"eth2" -- "leaf02":"swp5" [left_mac="00:04:00:11:11:02"]
-  "storage04":"eth1" -- "leaf01":"swp6" [left_mac="00:04:00:22:22:01"]
-  "storage04":"eth2" -- "leaf02":"swp6" [left_mac="00:04:00:22:22:02"]
+  "storage03":"eth1" -- "leaf01":"swp5" [left_mac="00:04:00:11:11:03"]
+  "storage03":"eth2" -- "leaf02":"swp5" [left_mac="00:04:00:11:11:04"]
+  "storage04":"eth1" -- "leaf01":"swp6" [left_mac="00:04:00:22:22:03"]
+  "storage04":"eth2" -- "leaf02":"swp6" [left_mac="00:04:00:22:22:04"]
 
   "exit01":"swp56" -- "spine01":"swp30"
   "exit01":"swp55" -- "spine02":"swp30"
