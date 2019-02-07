@@ -82,8 +82,8 @@ graph vx {
   "internet":"eth0" -- "oob-mgmt-switch":"swp13" [left_mac="a0:00:00:00:00:50"]
   "f5-1":"eth0" -- "oob-mgmt-switch":"swp14" [left_mac="a0:00:00:00:00:71"]
   "f5-2":"eth0" -- "oob-mgmt-switch":"swp15" [left_mac="a0:00:00:00:00:72"]
-  "server01":"eth0" -- "oob-mgmt-switch":"swp16" [left_mac="a0:00:00:00:00:81"]
-  "server02":"eth0" -- "oob-mgmt-switch":"swp17" [left_mac="a0:00:00:00:00:82"]
-  "server03":"eth0" -- "oob-mgmt-switch":"swp18" [left_mac="a0:00:00:00:00:83"]
-  "server04":"eth0" -- "oob-mgmt-switch":"swp19" [left_mac="a0:00:00:00:00:84"]
+  "storage01":"eth0" -- "oob-mgmt-switch":"swp16" [left_mac="a0:00:00:00:00:81"]
+  "storage02":"eth0" -- "oob-mgmt-switch":"swp17" [left_mac="a0:00:00:00:00:82"]
+  "storage03":"eth0" -- "oob-mgmt-switch":"swp18" [left_mac="a0:00:00:00:00:83"]
+  "storage04":"eth0" -- "oob-mgmt-switch":"swp19" [left_mac="a0:00:00:00:00:84"]
 }
