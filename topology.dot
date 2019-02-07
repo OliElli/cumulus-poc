@@ -15,6 +15,10 @@ graph vx {
   "oob-mgmt-server" [function="oob-server" vagrant="eth0" os="CumulusCommunity/vx_oob_server" version="1.0.4" memory="1024" config="./helper_scripts/config_oob_server.sh" ]
   "f5-1" [function="exit" os="CumulusCommunity/cumulus-vx" version="3.7.2" memory="768" config="./helper_scripts/config_switch.sh" ]
   "f5-2" [function="exit" os="CumulusCommunity/cumulus-vx" version="3.7.2" memory="768" config="./helper_scripts/config_switch.sh" ]
+  "storage01" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
+  "storage02" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
+  "storage03" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
+  "storage04" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
 
   "leaf01":"swp56" -- "spine01":"swp1"
   "leaf02":"swp56" -- "spine01":"swp2"
@@ -32,6 +36,15 @@ graph vx {
   "server03":"eth2" -- "exit02":"swp11" [left_mac="00:03:00:33:33:02"]
   "server04":"eth1" -- "exit01":"swp12" [left_mac="00:03:00:44:44:01"]
   "server04":"eth2" -- "exit02":"swp12" [left_mac="00:03:00:44:44:02"]
+
+  "storage01":"eth1" -- "leaf01":"swp3" [left_mac="00:04:00:11:11:01"]
+  "storage01":"eth2" -- "leaf02":"swp3" [left_mac="00:04:00:11:11:02"]
+  "storage02":"eth1" -- "leaf01":"swp4" [left_mac="00:04:00:22:22:01"]
+  "storage02":"eth2" -- "leaf02":"swp4" [left_mac="00:04:00:22:22:02"]
+  "storage03":"eth1" -- "leaf01":"swp5" [left_mac="00:04:00:11:11:01"]
+  "storage03":"eth2" -- "leaf02":"swp5" [left_mac="00:04:00:11:11:02"]
+  "storage04":"eth1" -- "leaf01":"swp6" [left_mac="00:04:00:22:22:01"]
+  "storage04":"eth2" -- "leaf02":"swp6" [left_mac="00:04:00:22:22:02"]
 
   "exit01":"swp56" -- "spine01":"swp30"
   "exit01":"swp55" -- "spine02":"swp30"
@@ -61,12 +74,16 @@ graph vx {
   "server04":"eth0" -- "oob-mgmt-switch":"swp5" [left_mac="a0:00:00:00:00:34"]
   "leaf01":"eth0" -- "oob-mgmt-switch":"swp6" [left_mac="a0:00:00:00:00:11"]
   "leaf02":"eth0" -- "oob-mgmt-switch":"swp7" [left_mac="a0:00:00:00:00:12"]
-  "spine01":"eth0" -- "oob-mgmt-switch":"swp10" [left_mac="a0:00:00:00:00:21"]
-  "spine02":"eth0" -- "oob-mgmt-switch":"swp11" [left_mac="a0:00:00:00:00:22"]
-  "exit01":"eth0" -- "oob-mgmt-switch":"swp12" [left_mac="a0:00:00:00:00:41"]
-  "exit02":"eth0" -- "oob-mgmt-switch":"swp13" [left_mac="a0:00:00:00:00:42"]
-  "edge01":"eth0" -- "oob-mgmt-switch":"swp14" [left_mac="a0:00:00:00:00:51"]
-  "internet":"eth0" -- "oob-mgmt-switch":"swp15" [left_mac="a0:00:00:00:00:50"]
-  "f5-1":"eth0" -- "oob-mgmt-switch":"swp16" [left_mac="a0:00:00:00:00:71"]
-  "f5-2":"eth0" -- "oob-mgmt-switch":"swp17" [left_mac="a0:00:00:00:00:72"]
+  "spine01":"eth0" -- "oob-mgmt-switch":"swp8" [left_mac="a0:00:00:00:00:21"]
+  "spine02":"eth0" -- "oob-mgmt-switch":"swp9" [left_mac="a0:00:00:00:00:22"]
+  "exit01":"eth0" -- "oob-mgmt-switch":"swp10" [left_mac="a0:00:00:00:00:41"]
+  "exit02":"eth0" -- "oob-mgmt-switch":"swp11" [left_mac="a0:00:00:00:00:42"]
+  "edge01":"eth0" -- "oob-mgmt-switch":"swp12" [left_mac="a0:00:00:00:00:51"]
+  "internet":"eth0" -- "oob-mgmt-switch":"swp13" [left_mac="a0:00:00:00:00:50"]
+  "f5-1":"eth0" -- "oob-mgmt-switch":"swp14" [left_mac="a0:00:00:00:00:71"]
+  "f5-2":"eth0" -- "oob-mgmt-switch":"swp15" [left_mac="a0:00:00:00:00:72"]
+  "server01":"eth0" -- "oob-mgmt-switch":"swp16" [left_mac="a0:00:00:00:00:81"]
+  "server02":"eth0" -- "oob-mgmt-switch":"swp17" [left_mac="a0:00:00:00:00:82"]
+  "server03":"eth0" -- "oob-mgmt-switch":"swp18" [left_mac="a0:00:00:00:00:83"]
+  "server04":"eth0" -- "oob-mgmt-switch":"swp19" [left_mac="a0:00:00:00:00:84"]
 }
