@@ -1,3 +1,9 @@
+# Vagrant stuff
+.vagrant/
+Vagrantfile
+Vagrantfile-vbox
+dhcp_mac_map
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
