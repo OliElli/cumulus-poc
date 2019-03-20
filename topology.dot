@@ -51,21 +51,17 @@ graph vx {
   "exit02":"swp56" -- "spine01":"swp29"
   "exit02":"swp55" -- "spine02":"swp29"
 
-  "internet":"swp1" -- "exit01":"swp1"
-  "internet":"swp2" -- "exit02":"swp1"
+  "internet":"swp1" -- "f5-1":"swp3"
+  "internet":"swp2" -- "f5-2":"swp3"
 
   "edge01":"eth1" -- "exit01":"swp10"
   "edge01":"eth2" -- "exit02":"swp10"
 
-  "f5-1":"swp1" -- "exit01":"swp3"
-  "f5-1":"swp2" -- "exit01":"swp4"
-  "f5-1":"swp3" -- "exit02":"swp3"
-  "f5-1":"swp4" -- "exit02":"swp4"
+  "f5-1":"swp1" -- "exit01":"swp1"
+  "f5-1":"swp2" -- "exit02":"swp1"
   
-  "f5-2":"swp1" -- "exit01":"swp5"
-  "f5-2":"swp2" -- "exit01":"swp6"
-  "f5-2":"swp3" -- "exit02":"swp5"
-  "f5-2":"swp4" -- "exit02":"swp6"
+  "f5-2":"swp1" -- "exit01":"swp2"
+  "f5-2":"swp2" -- "exit02":"swp2"
 
   "oob-mgmt-server":"eth1" -- "oob-mgmt-switch":"swp1" [right_mac="a0:00:00:00:00:61"]
   "server01":"eth0" -- "oob-mgmt-switch":"swp2" [left_mac="a0:00:00:00:00:31"]
