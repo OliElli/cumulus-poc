@@ -108,3 +108,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+vx-simulation/topology_converter
+
+vx-simulation/\.DS_Store
+
+\.DS_Store
