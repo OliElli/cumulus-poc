@@ -1,0 +1,35 @@
+# Created by Topology-Converter v4.6.9
+#    Template Revision: v4.6.9
+
+
+127.0.0.1 localhost 
+127.0.1.1 oob-mgmt-server
+
+192.168.200.254 oob-mgmt-server
+
+
+192.168.200.2 oob-mgmt-switch
+192.168.200.9 f5-1
+192.168.200.13 exit02
+192.168.200.14 exit01
+192.168.200.19 f5-2
+192.168.200.10 spine02
+192.168.200.12 spine01
+192.168.200.1 leaf02
+192.168.200.3 leaf01
+192.168.200.4 storage02
+192.168.200.5 storage03
+192.168.200.6 storage01
+192.168.200.8 storage04
+192.168.200.11 edge01
+192.168.200.15 server01
+192.168.200.16 server03
+192.168.200.17 server02
+192.168.200.18 server04
+192.168.200.7 internet
+
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
