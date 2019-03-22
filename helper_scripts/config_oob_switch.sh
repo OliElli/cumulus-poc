@@ -19,7 +19,7 @@ iface bridge
     alias Untagged Bridge
     bridge-ports swp1 swp2 swp3 swp4 swp5 swp6 swp7 swp8 swp9 swp10 swp11 swp12 swp13 swp14 swp15
     hwaddress a0:00:00:00:00:61
-    address 192.168.0.1/24
+    address 172.17.192.249/24
     
 EOT
 

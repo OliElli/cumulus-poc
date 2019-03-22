@@ -18,7 +18,7 @@ iface eth0 inet dhcp
 auto eth1
 iface eth1
     alias Faces the Internal Management Network
-    address 192.168.0.254/24
+    address 172.17.192.250/24
 
 EOT
 
@@ -54,34 +54,34 @@ echo " ### Pushing Ansible Hosts File ###"
 mkdir -p /etc/ansible
 cat << EOT > /etc/ansible/hosts
 [oob-switch]
-oob-mgmt-switch ansible_host=192.168.0.1 ansible_user=cumulus
+oob-mgmt-switch ansible_host=172.17.192.249 ansible_user=cumulus
 
 [exit]
-exit01 ansible_host=192.168.0.41 ansible_user=cumulus
-exit02 ansible_host=192.168.0.42 ansible_user=cumulus
+exit01 ansible_host=172.17.192.5 ansible_user=cumulus
+exit02 ansible_host=172.17.192.6 ansible_user=cumulus
 
 [leaf]
-leaf01 ansible_host=192.168.0.11 ansible_user=cumulus
-leaf02 ansible_host=192.168.0.12 ansible_user=cumulus
+leaf01 ansible_host=172.17.192.1 ansible_user=cumulus
+leaf02 ansible_host=172.17.192.2 ansible_user=cumulus
 
 [spine]
-spine01 ansible_host=192.168.0.21 ansible_user=cumulus
-spine02 ansible_host=192.168.0.22 ansible_user=cumulus
+spine01 ansible_host=172.17.192.3 ansible_user=cumulus
+spine02 ansible_host=172.17.192.4 ansible_user=cumulus
 
 [host]
-server01 ansible_host=192.168.0.31 ansible_user=cumulus
-server02 ansible_host=192.168.0.32 ansible_user=cumulus
-server03 ansible_host=192.168.0.33 ansible_user=cumulus
-server04 ansible_host=192.168.0.34 ansible_user=cumulus
-edge01 ansible_host=192.168.0.51 ansible_user=cumulus
-storage01 ansible_host=192.168.0.81 ansible_user=cumulus
-storage02 ansible_host=192.168.0.82 ansible_user=cumulus
-storage03 ansible_host=192.168.0.83 ansible_user=cumulus
-storage04 ansible_host=192.168.0.84 ansible_user=cumulus
+server01 ansible_host=172.17.192.31 ansible_user=cumulus
+server02 ansible_host=172.17.192.32 ansible_user=cumulus
+server03 ansible_host=172.17.192.33 ansible_user=cumulus
+server04 ansible_host=172.17.192.34 ansible_user=cumulus
+edge01 ansible_host=172.17.192.51 ansible_user=cumulus
+storage01 ansible_host=172.17.192.81 ansible_user=cumulus
+storage02 ansible_host=172.17.192.82 ansible_user=cumulus
+storage03 ansible_host=172.17.192.83 ansible_user=cumulus
+storage04 ansible_host=172.17.192.84 ansible_user=cumulus
 
 [f5]
-f5-1 ansible_host=192.168.0.13 ansible_user=cumulus
-f5-2 ansible_host=192.168.0.14 ansible_user=cumulus
+f5-1 ansible_host=172.17.192.7 ansible_user=cumulus
+f5-2 ansible_host=172.17.192.8 ansible_user=cumulus
 EOT
 
 echo " ### Pushing DHCP File ###"
@@ -125,16 +125,16 @@ class "onie-vendor-classes" {
 # OOB Management subnet
 shared-network LOCAL-NET{
 
-subnet 192.168.0.0 netmask 255.255.255.0 {
-  range 192.168.0.201 192.168.0.250;
-  option domain-name-servers 192.168.0.254;
+subnet 172.17.192.0 netmask 255.255.255.0 {
+  range 172.17.192.201 172.17.192.250;
+  option domain-name-servers 172.17.192.250;
   option domain-name "simulation";
   default-lease-time 172800;  #2 days
   max-lease-time 345600;      #4 days
-  option www-server 192.168.0.254;
-  option default-url = "http://192.168.0.254/onie-installer";
-  option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";
-  option ntp-servers 192.168.0.254;
+  option www-server 172.17.192.250;
+  option default-url = "http://172.17.192.250/onie-installer";
+  option cumulus-provision-url "http://172.17.192.250/ztp_oob.sh";
+  option ntp-servers 172.17.192.250;
 }
 
 }
@@ -147,31 +147,31 @@ echo " ### Push DHCP Host Config ###"
 cat << EOT > /etc/dhcp/dhcpd.hosts
 group {
 
-  option domain-name-servers 192.168.0.254;
+  option domain-name-servers 172.17.192.250;
   option domain-name "simulation";
-  option routers 192.168.0.254;
-  option www-server 192.168.0.254;
-  option default-url = "http://192.168.0.254/onie-installer";
+  option routers 172.17.192.250;
+  option www-server 172.17.192.250;
+  option default-url = "http://172.17.192.250/onie-installer";
 
-  host oob-mgmt-switch {hardware ethernet a0:00:00:00:00:61; fixed-address 192.168.0.1; option host-name "oob-mgmt-switch"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host exit02 {hardware ethernet 44:38:39:00:00:4e; fixed-address 192.168.0.42; option host-name "exit02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host exit01 {hardware ethernet 44:38:39:00:00:50; fixed-address 192.168.0.41; option host-name "exit01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host spine02 {hardware ethernet 44:38:39:00:00:48; fixed-address 192.168.0.22; option host-name "spine02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host spine01 {hardware ethernet 44:38:39:00:00:4c; fixed-address 192.168.0.21; option host-name "spine01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host f5-2 {hardware ethernet 44:38:39:00:00:5a; fixed-address 192.168.0.14; option host-name "f5-2"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host leaf02 {hardware ethernet 44:38:39:00:00:38; fixed-address 192.168.0.12; option host-name "leaf02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host f5-1 {hardware ethernet 44:38:39:00:00:46; fixed-address 192.168.0.13; option host-name "f5-1"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host leaf01 {hardware ethernet 44:38:39:00:00:3a; fixed-address 192.168.0.11; option host-name "leaf01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host edge01 {hardware ethernet 44:38:39:00:00:4a; fixed-address 192.168.0.51; option host-name "edge01"; } 
-  host server01 {hardware ethernet 44:38:39:00:00:52; fixed-address 192.168.0.31; option host-name "server01"; } 
-  host server03 {hardware ethernet 44:38:39:00:00:54; fixed-address 192.168.0.33; option host-name "server03"; } 
-  host server02 {hardware ethernet 44:38:39:00:00:56; fixed-address 192.168.0.32; option host-name "server02"; } 
-  host server04 {hardware ethernet 44:38:39:00:00:58; fixed-address 192.168.0.34; option host-name "server04"; } 
-  host storage01 {hardware ethernet 44:38:39:00:00:40; fixed-address 192.168.0.81; option host-name "storage01"; } 
-  host storage02 {hardware ethernet 44:38:39:00:00:3c; fixed-address 192.168.0.82; option host-name "storage02"; } 
-  host storage03 {hardware ethernet 44:38:39:00:00:3e; fixed-address 192.168.0.83; option host-name "storage03"; } 
-  host storage04 {hardware ethernet 44:38:39:00:00:44; fixed-address 192.168.0.84; option host-name "storage04"; } 
-  host internet {hardware ethernet 44:38:39:00:00:42; fixed-address 192.168.0.253; option host-name "internet"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host oob-mgmt-switch {hardware ethernet a0:00:00:00:00:61; fixed-address 172.17.192.249; option host-name "oob-mgmt-switch"; option cumulus-provision-url "http://172.17.192.250/ztp_oob.sh";  } 
+  host exit02 {hardware ethernet 44:38:39:00:00:4e; fixed-address 172.17.192.6; option host-name "exit02"; option cumulus-provision-url "http://172.17.192.250/ztp_oob.sh";  } 
+  host exit01 {hardware ethernet 44:38:39:00:00:50; fixed-address 172.17.192.5; option host-name "exit01"; option cumulus-provision-url "http://172.17.192.250/ztp_oob.sh";  } 
+  host spine02 {hardware ethernet 44:38:39:00:00:48; fixed-address 172.17.192.4; option host-name "spine02"; option cumulus-provision-url "http://172.17.192.250/ztp_oob.sh";  } 
+  host spine01 {hardware ethernet 44:38:39:00:00:4c; fixed-address 172.17.192.3; option host-name "spine01"; option cumulus-provision-url "http://172.17.192.250/ztp_oob.sh";  } 
+  host f5-2 {hardware ethernet 44:38:39:00:00:5a; fixed-address 172.17.192.8; option host-name "f5-2"; option cumulus-provision-url "http://172.17.192.250/ztp_oob.sh";  } 
+  host leaf02 {hardware ethernet 44:38:39:00:00:38; fixed-address 172.17.192.2; option host-name "leaf02"; option cumulus-provision-url "http://172.17.192.250/ztp_oob.sh";  } 
+  host f5-1 {hardware ethernet 44:38:39:00:00:46; fixed-address 172.17.192.7; option host-name "f5-1"; option cumulus-provision-url "http://172.17.192.250/ztp_oob.sh";  } 
+  host leaf01 {hardware ethernet 44:38:39:00:00:3a; fixed-address 172.17.192.1; option host-name "leaf01"; option cumulus-provision-url "http://172.17.192.250/ztp_oob.sh";  } 
+  host edge01 {hardware ethernet 44:38:39:00:00:4a; fixed-address 172.17.192.51; option host-name "edge01"; } 
+  host server01 {hardware ethernet 44:38:39:00:00:52; fixed-address 172.17.192.31; option host-name "server01"; } 
+  host server03 {hardware ethernet 44:38:39:00:00:54; fixed-address 172.17.192.33; option host-name "server03"; } 
+  host server02 {hardware ethernet 44:38:39:00:00:56; fixed-address 172.17.192.32; option host-name "server02"; } 
+  host server04 {hardware ethernet 44:38:39:00:00:58; fixed-address 172.17.192.34; option host-name "server04"; } 
+  host storage01 {hardware ethernet 44:38:39:00:00:40; fixed-address 172.17.192.81; option host-name "storage01"; } 
+  host storage02 {hardware ethernet 44:38:39:00:00:3c; fixed-address 172.17.192.82; option host-name "storage02"; } 
+  host storage03 {hardware ethernet 44:38:39:00:00:3e; fixed-address 172.17.192.83; option host-name "storage03"; } 
+  host storage04 {hardware ethernet 44:38:39:00:00:44; fixed-address 172.17.192.84; option host-name "storage04"; } 
+  host internet {hardware ethernet 44:38:39:00:00:42; fixed-address 172.17.192.248; option host-name "internet"; option cumulus-provision-url "http://172.17.192.250/ztp_oob.sh";  } 
 
 }#End of static host group
 EOT
@@ -185,27 +185,27 @@ cat << EOT > /etc/hosts
 127.0.0.1 localhost 
 127.0.1.1 oob-mgmt-server
 
-192.168.0.254 oob-mgmt-server 
+172.17.192.250 oob-mgmt-server 
 
-192.168.0.1 oob-mgmt-switch
-192.168.0.11 leaf01 juliet-cl-leaf01.nwid.bris.ac.uk
-192.168.0.12 leaf02 juliet-cl-leaf02.nwid.bris.ac.uk
-192.168.0.13 f5-1
-192.168.0.14 f5-2
-192.168.0.21 spine01 juliet-cl-spine01.nwid.bris.ac.uk
-192.168.0.22 spine02 juliet-cl-spine02.nwid.bris.ac.uk
-192.168.0.31 server01
-192.168.0.32 server02
-192.168.0.33 server03
-192.168.0.34 server04
-192.168.0.41 exit01 juliet-cl-exit01.nwid.bris.ac.uk
-192.168.0.42 exit02 juliet-cl-exit02.nwid.bris.ac.uk
-192.168.0.51 edge01
-192.168.0.81 storage01
-192.168.0.82 storage02
-192.168.0.83 storage03
-192.168.0.84 storage04
-192.168.0.253 internet
+172.17.192.249 oob-mgmt-switch
+172.17.192.1 leaf01 juliet-cl-leaf01.nwid.bris.ac.uk
+172.17.192.2 leaf02 juliet-cl-leaf02.nwid.bris.ac.uk
+172.17.192.7 f5-1
+172.17.192.8 f5-2
+172.17.192.3 spine01 juliet-cl-spine01.nwid.bris.ac.uk
+172.17.192.4 spine02 juliet-cl-spine02.nwid.bris.ac.uk
+172.17.192.31 server01
+172.17.192.32 server02
+172.17.192.33 server03
+172.17.192.34 server04
+172.17.192.5 exit01 juliet-cl-exit01.nwid.bris.ac.uk
+172.17.192.6 exit02 juliet-cl-exit02.nwid.bris.ac.uk
+172.17.192.51 edge01
+172.17.192.81 storage01
+172.17.192.82 storage02
+172.17.192.83 storage03
+172.17.192.84 storage04
+172.17.192.248 internet
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
@@ -272,7 +272,7 @@ trap error ERR
 
 # Setup SSH key authentication for Ansible
 mkdir -p /home/cumulus/.ssh
-#wget -O /home/cumulus/.ssh/authorized_keys http://192.168.0.254/authorized_keys
+#wget -O /home/cumulus/.ssh/authorized_keys http://172.17.192.250/authorized_keys
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzH+R+UhjVicUtI0daNUcedYhfvgT1dbZXgY33Ibm4MOo+X84Iwuzirm3QFnYf2O3uyZjNyrA6fj9qFE7Ekul4bD6PCstQupXPwfPMjns2M7tkHsKnLYjNxWNql/rCUxoH2B6nPyztcRCass3lIc2clfXkCY9Jtf7kgC2e/dmchywPV5PrFqtlHgZUnyoPyWBH7OjPLVxYwtCJn96sFkrjaG9QDOeoeiNvcGlk4DJp/g9L4f2AaEq69x8+gBTFUqAFsD8ecO941cM8sa1167rsRPx7SK3270Ji5EUF3lZsgpaiIgMhtIB/7QNTkN9ZjQBazxxlNVN6WthF8okb7OSt" >> /home/cumulus/.ssh/authorized_keys
 chmod 700 -R /home/cumulus/.ssh
 chown cumulus:cumulus -R /home/cumulus/.ssh
@@ -282,7 +282,7 @@ echo "cumulus ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/10_cumulus
 
 # Setup NTP
 sed -i '/^server [1-3]/d' /etc/ntp.conf
-sed -i 's/^server 0.cumulusnetworks.pool.ntp.org iburst/server 192.168.0.254 iburst/g' /etc/ntp.conf
+sed -i 's/^server 0.cumulusnetworks.pool.ntp.org iburst/server 172.17.192.250 iburst/g' /etc/ntp.conf
 
 ping 8.8.8.8 -c2
 if [ "\$?" == "0" ]; then
