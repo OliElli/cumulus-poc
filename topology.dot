@@ -20,10 +20,10 @@ graph vx {
   "storage03" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
   "storage04" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
 
-  "leaf01":"swp56" -- "spine01":"swp1"
-  "leaf02":"swp56" -- "spine01":"swp2"
-  "leaf01":"swp55" -- "spine02":"swp1"
-  "leaf02":"swp55" -- "spine02":"swp2"
+  "leaf01":"swp56" -- "spine01":"swp32"
+  "leaf02":"swp56" -- "spine01":"swp31"
+  "leaf01":"swp55" -- "spine02":"swp32"
+  "leaf02":"swp55" -- "spine02":"swp31"
 
   "leaf01":"swp54" -- "leaf02":"swp54"
   "exit01":"swp54" -- "exit02":"swp54"
