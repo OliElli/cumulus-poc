@@ -154,24 +154,24 @@ group {
   option default-url = "http://192.168.0.254/onie-installer";
 
   host oob-mgmt-switch {hardware ethernet a0:00:00:00:00:61; fixed-address 192.168.0.1; option host-name "oob-mgmt-switch"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host exit02 {hardware ethernet a0:00:00:00:00:42; fixed-address 192.168.0.42; option host-name "exit02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host exit01 {hardware ethernet a0:00:00:00:00:41; fixed-address 192.168.0.41; option host-name "exit01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host spine02 {hardware ethernet a0:00:00:00:00:22; fixed-address 192.168.0.22; option host-name "spine02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host spine01 {hardware ethernet a0:00:00:00:00:21; fixed-address 192.168.0.21; option host-name "spine01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host f5-2 {hardware ethernet a0:00:00:00:00:14; fixed-address 192.168.0.14; option host-name "f5-2"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host leaf02 {hardware ethernet a0:00:00:00:00:12; fixed-address 192.168.0.12; option host-name "leaf02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host f5-1 {hardware ethernet a0:00:00:00:00:13; fixed-address 192.168.0.13; option host-name "f5-1"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host leaf01 {hardware ethernet a0:00:00:00:00:11; fixed-address 192.168.0.11; option host-name "leaf01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
-  host edge01 {hardware ethernet a0:00:00:00:00:51; fixed-address 192.168.0.51; option host-name "edge01"; } 
-  host server01 {hardware ethernet a0:00:00:00:00:31; fixed-address 192.168.0.31; option host-name "server01"; } 
-  host server03 {hardware ethernet a0:00:00:00:00:33; fixed-address 192.168.0.33; option host-name "server03"; } 
-  host server02 {hardware ethernet a0:00:00:00:00:32; fixed-address 192.168.0.32; option host-name "server02"; } 
-  host server04 {hardware ethernet a0:00:00:00:00:34; fixed-address 192.168.0.34; option host-name "server04"; } 
-  host storage01 {hardware ethernet a0:00:00:00:00:81; fixed-address 192.168.0.81; option host-name "storage01"; } 
-  host storage02 {hardware ethernet a0:00:00:00:00:82; fixed-address 192.168.0.82; option host-name "storage02"; } 
-  host storage03 {hardware ethernet a0:00:00:00:00:83; fixed-address 192.168.0.83; option host-name "storage03"; } 
-  host storage04 {hardware ethernet a0:00:00:00:00:84; fixed-address 192.168.0.84; option host-name "storage04"; } 
-  host internet {hardware ethernet a0:00:00:00:00:50; fixed-address 192.168.0.253; option host-name "internet"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host exit02 {hardware ethernet 44:38:39:00:00:4e; fixed-address 192.168.0.42; option host-name "exit02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host exit01 {hardware ethernet 44:38:39:00:00:50; fixed-address 192.168.0.41; option host-name "exit01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host spine02 {hardware ethernet 44:38:39:00:00:48; fixed-address 192.168.0.22; option host-name "spine02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host spine01 {hardware ethernet 44:38:39:00:00:4c; fixed-address 192.168.0.21; option host-name "spine01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host f5-2 {hardware ethernet 44:38:39:00:00:5a; fixed-address 192.168.0.14; option host-name "f5-2"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host leaf02 {hardware ethernet 44:38:39:00:00:38; fixed-address 192.168.0.12; option host-name "leaf02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host f5-1 {hardware ethernet 44:38:39:00:00:46; fixed-address 192.168.0.13; option host-name "f5-1"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host leaf01 {hardware ethernet 44:38:39:00:00:3a; fixed-address 192.168.0.11; option host-name "leaf01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
+  host edge01 {hardware ethernet 44:38:39:00:00:4a; fixed-address 192.168.0.51; option host-name "edge01"; } 
+  host server01 {hardware ethernet 44:38:39:00:00:52; fixed-address 192.168.0.31; option host-name "server01"; } 
+  host server03 {hardware ethernet 44:38:39:00:00:54; fixed-address 192.168.0.33; option host-name "server03"; } 
+  host server02 {hardware ethernet 44:38:39:00:00:56; fixed-address 192.168.0.32; option host-name "server02"; } 
+  host server04 {hardware ethernet 44:38:39:00:00:58; fixed-address 192.168.0.34; option host-name "server04"; } 
+  host storage01 {hardware ethernet 44:38:39:00:00:40; fixed-address 192.168.0.81; option host-name "storage01"; } 
+  host storage02 {hardware ethernet 44:38:39:00:00:3c; fixed-address 192.168.0.82; option host-name "storage02"; } 
+  host storage03 {hardware ethernet 44:38:39:00:00:3e; fixed-address 192.168.0.83; option host-name "storage03"; } 
+  host storage04 {hardware ethernet 44:38:39:00:00:44; fixed-address 192.168.0.84; option host-name "storage04"; } 
+  host internet {hardware ethernet 44:38:39:00:00:42; fixed-address 192.168.0.253; option host-name "internet"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  } 
 
 }#End of static host group
 EOT
@@ -188,18 +188,18 @@ cat << EOT > /etc/hosts
 192.168.0.254 oob-mgmt-server 
 
 192.168.0.1 oob-mgmt-switch
-192.168.0.11 leaf01
-192.168.0.12 leaf02
+192.168.0.11 leaf01 juliet-cl-leaf01.nwid.bris.ac.uk
+192.168.0.12 leaf02 juliet-cl-leaf02.nwid.bris.ac.uk
 192.168.0.13 f5-1
 192.168.0.14 f5-2
-192.168.0.21 spine01
-192.168.0.22 spine02
+192.168.0.21 spine01 juliet-cl-spine01.nwid.bris.ac.uk
+192.168.0.22 spine02 juliet-cl-spine02.nwid.bris.ac.uk
 192.168.0.31 server01
 192.168.0.32 server02
 192.168.0.33 server03
 192.168.0.34 server04
-192.168.0.41 exit01
-192.168.0.42 exit02
+192.168.0.41 exit01 juliet-cl-exit01.nwid.bris.ac.uk
+192.168.0.42 exit02 juliet-cl-exit02.nwid.bris.ac.uk
 192.168.0.51 edge01
 192.168.0.81 storage01
 192.168.0.82 storage02
@@ -293,6 +293,14 @@ nohup bash -c 'sleep 2; shutdown now -r "Rebooting to Complete ZTP"' &
 exit 0
 #CUMULUS-AUTOPROVISIONING
 EOT
+
+# Additions for UnivOfBristol
+echo "### Installing pip modules ###"
+yes | pip install jinja2 jmespath
+echo "### Upgrading Jinja2 ###"
+yes | pip install --upgrade Jinja2
+echo "### Installing python-netaddr"
+apt -yq install python-netaddr
 
 echo "############################################"
 echo "      DONE!"
