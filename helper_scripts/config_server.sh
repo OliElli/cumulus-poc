@@ -1,4 +1,5 @@
 #!/bin/bash
+export DEBIAN_FRONTEND=noninteractive
 
 echo "#################################"
 echo "  Running config_server.sh"

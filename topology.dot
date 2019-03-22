@@ -27,6 +27,8 @@ graph vx {
 
   "leaf01":"swp54" -- "leaf02":"swp54"
   "exit01":"swp54" -- "exit02":"swp54"
+  "f5-1":"swp54" -- "f5-2":"swp54"
+
 
   "server01":"eth1" -- "leaf01":"swp1" [left_mac="00:03:00:11:11:01"]
   "server01":"eth2" -- "leaf02":"swp1" [left_mac="00:03:00:11:11:02"]
