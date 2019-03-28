@@ -190,7 +190,7 @@ end
     
     device.vm.hostname = "oob-mgmt-server" 
     
-    device.vm.box = "yk0/ubuntu-xenial"
+    device.vm.box = "CumulusCommunity/vx_oob_server"
     device.vm.box_version = "1.0.4"
 
     device.vm.provider :libvirt do |v|
