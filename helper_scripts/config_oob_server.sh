@@ -186,7 +186,7 @@ cat << EOT > /etc/hosts
 127.0.1.1 oob-mgmt-server
 
 172.17.192.250 oob-mgmt-server 
-
+172.17.192.247 netq-server
 172.17.192.249 oob-mgmt-switch
 172.17.192.1 leaf01 juliet-cl-leaf01.nwid.bris.ac.uk
 172.17.192.2 leaf02 juliet-cl-leaf02.nwid.bris.ac.uk

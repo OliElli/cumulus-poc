@@ -5,28 +5,28 @@
 127.0.0.1 localhost 
 127.0.1.1 oob-mgmt-server
 
-192.168.200.254 oob-mgmt-server
+172.17.192.250 oob-mgmt-server
+172.17.192.247 netq-server
 
-
-192.168.200.2 oob-mgmt-switch
-192.168.200.9 f5-1
-192.168.200.13 exit02
-192.168.200.14 exit01
-192.168.200.19 f5-2
-192.168.200.10 spine02
-192.168.200.12 spine01
-192.168.200.1 leaf02
-192.168.200.3 leaf01
-192.168.200.4 storage02
-192.168.200.5 storage03
-192.168.200.6 storage01
-192.168.200.8 storage04
-192.168.200.11 edge01
-192.168.200.15 server01
-192.168.200.16 server03
-192.168.200.17 server02
-192.168.200.18 server04
-192.168.200.7 internet
+172.17.192.249 oob-mgmt-switch
+172.17.192.7 f5-1
+172.17.192.6 exit02
+172.17.192.5 exit01
+172.17.192.8 f5-2
+172.17.192.4 spine02
+172.17.192.3 spine01
+172.17.192.2 leaf02
+172.17.192.1 leaf01
+172.17.192.82 storage02
+172.17.192.83 storage03
+172.17.192.81 storage01
+172.17.192.84 storage04
+172.17.192.51 edge01
+172.17.192.31 server01
+172.17.192.33 server03
+172.17.192.32 server02
+172.17.192.34 server04
+172.17.192.248 internet
 
 
 # The following lines are desirable for IPv6 capable hosts

@@ -13,6 +13,7 @@ graph vx {
   "internet" [function="internet" vagrant="swp48" os="CumulusCommunity/cumulus-vx" version="3.7.3" memory="768" config="./helper_scripts/config_internet.sh" ]
   "oob-mgmt-switch" [function="oob-switch" vagrant="eth0" os="CumulusCommunity/cumulus-vx" version="3.7.3" memory="768" config="./helper_scripts/config_oob_switch.sh" ]
   "oob-mgmt-server" [function="oob-server" vagrant="eth0" os="CumulusCommunity/vx_oob_server" version="1.0.4" memory="1024" config="./helper_scripts/config_oob_server.sh" ]
+  "netq-server" [function="oob-server" vagrant="eth0" os="cumulus/ts" memory="1024" config="./helper_scripts/config_netq_server.sh" ]
   "f5-1" [function="exit" os="CumulusCommunity/cumulus-vx" version="3.7.3" memory="768" config="./helper_scripts/config_switch.sh" ]
   "f5-2" [function="exit" os="CumulusCommunity/cumulus-vx" version="3.7.3" memory="768" config="./helper_scripts/config_switch.sh" ]
   "storage01" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
